@@ -139,7 +139,7 @@ def train():
 
         if (epoch != 0) and (epoch % 10 == 0):
             tl.vis.save_images(fake_patchs.numpy(), [2, 4], os.path.join(save_dir, 'train_g_{}.png'.format(epoch)))
-            print("Saving chackpoin\n")
+            print("Saving checkpoint\n")
             G.save_weights(os.path.join(checkpoint_dir, 'g.h5'))
             D.save_weights(os.path.join(checkpoint_dir, 'd.h5'))
 
