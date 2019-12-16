@@ -10,6 +10,7 @@ import tensorflow as tf
 import tensorlayer as tl
 from model import get_G, get_D
 from config import config
+import skimage
 
 ###====================== HYPER-PARAMETERS ===========================###
 ## Adam
