@@ -10,7 +10,7 @@ import tensorflow as tf
 import tensorlayer as tl
 from model import get_G, get_D
 from config import config
-from skimage.metrics import peak_signal_noise_ratio
+import skimage
 
 ###====================== HYPER-PARAMETERS ===========================###
 ## Adam
@@ -186,7 +186,7 @@ def evaluate():
     tl.vis.save_image(valid_lr_img[0], os.path.join(save_dir, 'valid_lr.png'))
     tl.vis.save_image(valid_hr_img, os.path.join(save_dir, 'valid_hr.png'))
 
-    psnr = peak_signal_noise_ratio(valid_hr_img, valid_hr_img)
+    psnr = skimage.measure.compare_psnr(valid_hr_img, out[0])
     print("\n PSNR = %f dB" % psnr)
 
     out_bicu = scipy.misc.imresize(valid_lr_img[0], [size[0] * 4, size[1] * 4], interp='bicubic', mode=None)
