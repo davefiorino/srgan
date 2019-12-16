@@ -186,7 +186,7 @@ def evaluate():
     tl.vis.save_image(valid_lr_img[0], os.path.join(save_dir, 'valid_lr.png'))
     tl.vis.save_image(valid_hr_img, os.path.join(save_dir, 'valid_hr.png'))
 
-    psnr = skimage.measure.compare_psnr(valid_hr_img, out[0])
+    psnr = skimage.measure.compare_psnr(valid_hr_img, valid_hr_img)
     print("\n PSNR = %f dB" % psnr)
 
     out_bicu = scipy.misc.imresize(valid_lr_img[0], [size[0] * 4, size[1] * 4], interp='bicubic', mode=None)
